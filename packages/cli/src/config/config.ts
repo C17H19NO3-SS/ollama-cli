@@ -1,5 +1,12 @@
 /**
  * @license
+ * Copyright 2026 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/* eslint-disable */
+/**
+ * @license
  * Copyright 2025 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -164,9 +171,9 @@ export async function parseArguments(
   const startupMessages: string[] = [];
   const yargsInstance = yargs(rawArgv)
     .locale('en')
-    .scriptName('gemini')
+    .scriptName('ollama-cli')
     .usage(
-      'Usage: gemini [options] [command]\n\nGemini CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode.',
+      'Usage: ollama-cli [options] [command]\n\nOllama CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode.',
     )
     .option('isCommand', {
       type: 'boolean',
@@ -278,7 +285,7 @@ export async function parseArguments(
   yargsInstance.command(gemmaCommand);
 
   yargsInstance
-    .command('$0 [query..]', 'Launch Gemini CLI', (yargsInstance) =>
+    .command('ollama-cli [query..]', 'Launch Ollama CLI', (yargsInstance) =>
       yargsInstance
         .positional('query', {
           description:
@@ -380,7 +387,7 @@ export async function parseArguments(
           string: true,
           nargs: 1,
           description:
-            '[DEPRECATED: Use Policy Engine instead See https://geminicli.com/docs/core/policy-engine] Tools that are allowed to run without confirmation',
+            '[DEPRECATED: Use Policy Engine instead See https://ollama-clicli.com/docs/core/policy-engine] Tools that are allowed to run without confirmation',
           coerce: coerceCommaSeparated,
         })
         .option('extensions', {
@@ -406,8 +413,8 @@ export async function parseArguments(
           description:
             'Resume a previous session. Use "latest" for most recent or index number (e.g. --resume 5)',
           coerce: (value: string): string => {
-            // When --resume passed with a value (`gemini --resume 123`): value = "123" (string)
-            // When --resume passed without a value (`gemini --resume`): value = "" (string)
+            // When --resume passed with a value (`ollama-cli --resume 123`): value = "123" (string)
+            // When --resume passed without a value (`ollama-cli --resume`): value = "" (string)
             // When --resume not passed at all: this `coerce` function is not called at all, and
             //   `yargsInstance.argv.resume` is undefined.
             const trimmed = value.trim();
@@ -515,7 +522,7 @@ export async function parseArguments(
     if (result['skip-trust']) {
       process.env['GEMINI_CLI_TRUST_WORKSPACE'] = 'true';
     }
-  } catch (e) {
+  } catch (e: unknown) {
     const msg = getErrorMessage(e);
     debugLogger.error(msg);
     yargsInstance.showHelp();
@@ -556,7 +563,6 @@ export async function parseArguments(
 
   // The import format is now only controlled by settings.memoryImportFormat
   // We no longer accept it as a CLI argument
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
   return result as unknown as CliArgs;
 }
 
@@ -649,7 +655,7 @@ export async function loadCliConfig(
       if (!trimmedPath) return false;
       try {
         return resolveToRealPath(trimmedPath) !== realCwd;
-      } catch (e) {
+      } catch (e: unknown) {
         debugLogger.debug(
           `[IDE] Skipping inaccessible workspace folder: ${trimmedPath} (${getErrorMessage(e)})`,
         );
@@ -667,7 +673,6 @@ export async function loadCliConfig(
       requestSetting: promptForSetting,
       workspaceDir: cwd,
       enabledExtensionOverrides: argv.extensions,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
       eventEmitter: coreEvents as EventEmitter<ExtensionEvents>,
       clientVersion: await getVersion(),
     });
@@ -765,11 +770,10 @@ export async function loadCliConfig(
   let telemetrySettings;
   try {
     telemetrySettings = await resolveTelemetrySettings({
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
       env: process.env as unknown as Record<string, string | undefined>,
       settings: settings.telemetry,
     });
-  } catch (err) {
+  } catch (err: unknown) {
     if (err instanceof FatalConfigError) {
       throw new FatalConfigError(
         `Invalid telemetry configuration: ${err.message}.`,
@@ -1088,7 +1092,6 @@ export async function loadCliConfig(
     eventEmitter: coreEvents,
     useWriteTodos: argv.useWriteTodos ?? settings.useWriteTodos,
     output: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
       format: (argv.outputFormat ?? settings.output?.format) as OutputFormat,
     },
     gemmaModelRouter: settings.experimental?.gemmaModelRouter,

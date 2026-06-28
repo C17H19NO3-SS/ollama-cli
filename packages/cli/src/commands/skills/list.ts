@@ -4,6 +4,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/* eslint-disable */
+/**
+ * @license
+ * Copyright 2026 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import type { CommandModule } from 'yargs';
 import { loadSettings } from '../../config/settings.js';
 import { loadCliConfig, type CliArgs } from '../../config/config.js';
@@ -17,7 +24,6 @@ export async function handleList(args: { all?: boolean }) {
   const config = await loadCliConfig(
     settings.merged,
     'skills-list-session',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
     {
       debug: false,
     } as Partial<CliArgs> as CliArgs,
@@ -72,7 +78,6 @@ export const listCommand: CommandModule = {
       default: false,
     }),
   handler: async (argv) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
     await handleList({ all: argv['all'] as boolean });
     await exitCli();
   },

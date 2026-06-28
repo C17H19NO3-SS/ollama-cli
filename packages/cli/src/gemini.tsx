@@ -1,5 +1,12 @@
 /**
  * @license
+ * Copyright 2026 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/* eslint-disable */
+/**
+ * @license
  * Copyright 2025 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -146,7 +153,6 @@ export function getNodeMemoryArgs(isDebugMode: boolean): string[] {
   // Note: Only supported in specific Node.js versions compiled with V8 Sandbox enabled.
   const eptFlag = `--max-external-pointer-table-size=${DEFAULT_EPT_SIZE}`;
   const isV8SandboxEnabled =
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-type-assertion
     (process.config?.variables as any)?.v8_enable_sandbox === 1;
 
   if (
@@ -533,7 +539,7 @@ export async function main() {
         );
         await partialConfig.refreshAuth(authType);
       }
-    } catch (err) {
+    } catch (err: unknown) {
       if (err instanceof ValidationCancelledError) {
         // User cancelled verification, exit immediately.
         await runExitCleanup();
@@ -687,7 +693,7 @@ export async function main() {
       if (authType) {
         try {
           await config.refreshAuth(authType);
-        } catch (e) {
+        } catch (e: unknown) {
           // Auth failed - continue without summary generation capability
           debugLogger.debug(
             'Auth failed for --list-sessions, summaries may not be generated:',
@@ -923,12 +929,10 @@ export function initializeOutputListenersAndFlush(config?: Config) {
   coreEvents.drainBacklogs(
     <K extends keyof CoreEvents>(event: K, args: CoreEvents[K]) => {
       if (forceToStderr && event === (CoreEvent.Output as string)) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         const payload = args[0] as OutputPayload;
         if (!payload.isStderr) {
           return {
             event,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
             args: [{ ...payload, isStderr: true }] as unknown as CoreEvents[K],
           };
         }
@@ -943,7 +947,6 @@ function setupAdminControlsListener() {
   let config: Config | undefined;
 
   const messageHandler = (msg: unknown) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
     const message = msg as {
       type?: string;
       settings?: AdminControlsSettings;

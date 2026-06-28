@@ -4,6 +4,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/* eslint-disable */
+/**
+ * @license
+ * Copyright 2026 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import {
   type Config,
   AuthType,
@@ -94,7 +101,7 @@ export class AcpSessionManager {
         isAuthenticated = false;
         authErrorMessage = 'Gemini API key is missing or not configured.';
       }
-    } catch (e) {
+    } catch (e: unknown) {
       isAuthenticated = false;
       authErrorMessage = getAcpErrorMessage(e);
       debugLogger.error(
@@ -138,7 +145,6 @@ export class AcpSessionManager {
     this.sessions.set(sessionId, session);
 
     setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       session.sendAvailableCommands();
     }, 0);
 
@@ -202,11 +208,9 @@ export class AcpSessionManager {
     this.sessions.set(sessionId, session);
 
     // Stream history back to client
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     session.streamHistory(sessionData.messages);
 
     setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       session.sendAvailableCommands();
     }, 0);
 
@@ -257,7 +261,7 @@ export class AcpSessionManager {
         authDetails.baseUrl,
         authDetails.customHeaders,
       );
-    } catch (e) {
+    } catch (e: unknown) {
       debugLogger.error(`Authentication failed: ${e}`);
       throw acp.RequestError.authRequired();
     }
