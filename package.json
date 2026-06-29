@@ -1,5 +1,5 @@
 {
-  "name": "@google/gemini-cli",
+  "name": "ollama-cli",
   "version": "0.51.0-nightly.20260625.g3fbf93e26",
   "engines": {
     "node": ">=20.0.0"
@@ -86,7 +86,8 @@
     "cross-spawn": "7.0.6"
   },
   "bin": {
-    "gemini": "bundle/gemini.js"
+    "gemini": "bundle/gemini.js",
+    "ollama-cli": "bundle/gemini.js"
   },
   "files": [
     "bundle/",

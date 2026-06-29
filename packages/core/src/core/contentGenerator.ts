@@ -29,6 +29,7 @@ import { parseCustomHeaders } from '../utils/customHeaderUtils.js';
 import { determineSurface } from '../utils/surface.js';
 import { RecordingContentGenerator } from './recordingContentGenerator.js';
 import { getVersion, resolveModel } from '../../index.js';
+import { OllamaContentGenerator } from './ollamaContentGenerator.js';
 import type { LlmRole } from '../telemetry/llmRole.js';
 import { ModelMappingContentGenerator } from './modelMappingContentGenerator.js';
 import { CCPA_AI_MODEL_MAPPINGS } from '../config/models.js';
@@ -67,17 +68,22 @@ export enum AuthType {
   LEGACY_CLOUD_SHELL = 'cloud-shell',
   COMPUTE_ADC = 'compute-default-credentials',
   GATEWAY = 'gateway',
+  USE_OLLAMA = 'ollama',
 }
 
 /**
  * Detects the best authentication type based on environment variables.
  *
  * Checks in order:
+ * 0. OLLAMA_BASE_URL -> USE_OLLAMA
  * 1. GOOGLE_GENAI_USE_GCA=true -> LOGIN_WITH_GOOGLE
  * 2. GOOGLE_GENAI_USE_VERTEXAI=true -> USE_VERTEX_AI
  * 3. GEMINI_API_KEY -> USE_GEMINI
  */
 export function getAuthTypeFromEnv(): AuthType | undefined {
+  if (process.env['OLLAMA_BASE_URL']) {
+    return AuthType.USE_OLLAMA;
+  }
   if (process.env['GOOGLE_GENAI_USE_GCA'] === 'true') {
     return AuthType.LOGIN_WITH_GOOGLE;
   }
@@ -201,6 +207,11 @@ export async function createContentGeneratorConfig(
     return contentGeneratorConfig;
   }
 
+  if (authType === AuthType.USE_OLLAMA) {
+    contentGeneratorConfig.baseUrl = process.env['OLLAMA_BASE_URL'] || baseUrl;
+    return contentGeneratorConfig;
+  }
+
   return contentGeneratorConfig;
 }
 
@@ -302,6 +313,13 @@ export async function createContentGenerator(
           ),
           CCPA_AI_MODEL_MAPPINGS,
         ),
+        gcConfig,
+      );
+    }
+
+    if (config.authType === AuthType.USE_OLLAMA) {
+      return new LoggingContentGenerator(
+        new OllamaContentGenerator(gcConfig, config.baseUrl),
         gcConfig,
       );
     }

@@ -1,24 +1,24 @@
-# Gemini CLI
+# Ollama CLI
 
-[![Gemini CLI CI](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml)
-[![Gemini CLI E2E (Chained)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml)
-[![Version](https://img.shields.io/npm/v/@google/gemini-cli)](https://www.npmjs.com/package/@google/gemini-cli)
-[![License](https://img.shields.io/github/license/google-gemini/gemini-cli)](https://github.com/google-gemini/gemini-cli/blob/main/LICENSE)
-[![View Code Wiki](https://assets.codewiki.google/readme-badge/static.svg)](https://codewiki.google/github.com/google-gemini/gemini-cli?utm_source=badge&utm_medium=github&utm_campaign=github.com/google-gemini/gemini-cli)
+[![Ollama CLI CI](https://github.com/google-ollama/ollama-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/google-ollama/ollama-cli/actions/workflows/ci.yml)
+[![Ollama CLI E2E (Chained)](https://github.com/google-ollama/ollama-cli/actions/workflows/chained_e2e.yml/badge.svg)](https://github.com/google-ollama/ollama-cli/actions/workflows/chained_e2e.yml)
+[![Version](https://img.shields.io/npm/v/@google/ollama-cli)](https://www.npmjs.com/package/@google/ollama-cli)
+[![License](https://img.shields.io/github/license/google-ollama/ollama-cli)](https://github.com/google-ollama/ollama-cli/blob/main/LICENSE)
+[![View Code Wiki](https://assets.codewiki.google/readme-badge/static.svg)](https://codewiki.google/github.com/google-ollama/ollama-cli?utm_source=badge&utm_medium=github&utm_campaign=github.com/google-ollama/ollama-cli)
 
-![Gemini CLI Screenshot](/docs/assets/gemini-screenshot.png)
+![Ollama CLI Screenshot](/docs/assets/ollama-screenshot.png)
 
-Gemini CLI is an open-source AI agent that brings the power of Gemini directly
-into your terminal. It provides lightweight access to Gemini, giving you the
+Ollama CLI is an open-source AI agent that brings the power of Ollama directly
+into your terminal. It provides lightweight access to Ollama, giving you the
 most direct path from your prompt to our model.
 
-Learn all about Gemini CLI in our [documentation](https://geminicli.com/docs/).
+Learn all about Ollama CLI in our [documentation](https://ollamacli.com/docs/).
 
-## 🚀 Why Gemini CLI?
+## 🚀 Why Ollama CLI?
 
 - **🎯 Free tier**: 60 requests/min and 1,000 requests/day with personal Google
   account.
-- **🧠 Powerful Gemini 3 models**: Access to improved reasoning and 1M token
+- **🧠 Powerful Ollama 3 models**: Access to improved reasoning and 1M token
   context window.
 - **🔧 Built-in tools**: Google Search grounding, file operations, shell
   commands, web fetching.
@@ -30,7 +30,7 @@ Learn all about Gemini CLI in our [documentation](https://geminicli.com/docs/).
 ## 📦 Installation
 
 See
-[Gemini CLI installation, execution, and releases](https://www.geminicli.com/docs/get-started/installation)
+[Ollama CLI installation, execution, and releases](https://www.ollamacli.com/docs/get-started/installation)
 for recommended system specifications and a detailed installation guide.
 
 ### Quick Install
@@ -39,41 +39,41 @@ for recommended system specifications and a detailed installation guide.
 
 ```bash
 # Using npx (no installation required)
-npx @google/gemini-cli
+npx @google/ollama-cli
 ```
 
 #### Install globally with npm
 
 ```bash
-npm install -g @google/gemini-cli
+npm install -g @google/ollama-cli
 ```
 
 #### Install globally with Homebrew (macOS/Linux)
 
 ```bash
-brew install gemini-cli
+brew install ollama-cli
 ```
 
 #### Install globally with MacPorts (macOS)
 
 ```bash
-sudo port install gemini-cli
+sudo port install ollama-cli
 ```
 
 #### Install with Anaconda (for restricted environments)
 
 ```bash
 # Create and activate a new environment
-conda create -y -n gemini_env -c conda-forge nodejs
-conda activate gemini_env
+conda create -y -n ollama_env -c conda-forge nodejs
+conda activate ollama_env
 
-# Install Gemini CLI globally via npm (inside the environment)
-npm install -g @google/gemini-cli
+# Install Ollama CLI globally via npm (inside the environment)
+npm install -g @google/ollama-cli
 ```
 
 ## Release Channels
 
-See [Releases](https://www.geminicli.com/docs/changelogs) for more details.
+See [Releases](https://www.ollamacli.com/docs/changelogs) for more details.
 
 ### Preview
 
@@ -82,7 +82,7 @@ releases will not have been fully vetted and may contain regressions or other
 outstanding issues. Please help us test and install with `preview` tag.
 
 ```bash
-npm install -g @google/gemini-cli@preview
+npm install -g @google/ollama-cli@preview
 ```
 
 ### Stable
@@ -92,7 +92,7 @@ npm install -g @google/gemini-cli@preview
   and validations. Use `latest` tag.
 
 ```bash
-npm install -g @google/gemini-cli@latest
+npm install -g @google/ollama-cli@latest
 ```
 
 ### Nightly
@@ -102,7 +102,7 @@ npm install -g @google/gemini-cli@latest
   there are pending validations and issues. Use `nightly` tag.
 
 ```bash
-npm install -g @google/gemini-cli@nightly
+npm install -g @google/ollama-cli@nightly
 ```
 
 ## 📋 Key Features
@@ -124,21 +124,21 @@ npm install -g @google/gemini-cli@nightly
 ### Advanced Capabilities
 
 - Ground your queries with built-in
-  [Google Search](https://ai.google.dev/gemini-api/docs/grounding) for real-time
+  [Google Search](https://ai.google.dev/ollama-api/docs/grounding) for real-time
   information
 - Conversation checkpointing to save and resume complex sessions
 - Custom context files (GEMINI.md) to tailor behavior for your projects
 
 ### GitHub Integration
 
-Integrate Gemini CLI directly into your GitHub workflows with
-[**Gemini CLI GitHub Action**](https://github.com/google-github-actions/run-gemini-cli):
+Integrate Ollama CLI directly into your GitHub workflows with
+[**Ollama CLI GitHub Action**](https://github.com/google-github-actions/run-ollama-cli):
 
 - **Pull Request Reviews**: Automated code review with contextual feedback and
   suggestions
 - **Issue Triage**: Automated labeling and prioritization of GitHub issues based
   on content analysis
-- **On-demand Assistance**: Mention `@gemini-cli` in issues and pull requests
+- **On-demand Assistance**: Mention `@ollama-cli` in issues and pull requests
   for help with debugging, explanations, or task delegation
 - **Custom Workflows**: Build automated, scheduled and on-demand workflows
   tailored to your team's needs
@@ -149,22 +149,22 @@ Choose the authentication method that best fits your needs:
 
 ### Option 1: Sign in with Google (OAuth login using your Google Account)
 
-**✨ Best for:** Individual developers as well as anyone who has a Gemini Code
+**✨ Best for:** Individual developers as well as anyone who has a Ollama Code
 Assist License. (see
-[quota limits and terms of service](https://cloud.google.com/gemini/docs/quotas)
+[quota limits and terms of service](https://cloud.google.com/ollama/docs/quotas)
 for details)
 
 **Benefits:**
 
 - **Free tier**: 60 requests/min and 1,000 requests/day
-- **Gemini 3 models** with 1M token context window
+- **Ollama 3 models** with 1M token context window
 - **No API key management** - just sign in with your Google account
 - **Automatic updates** to latest models
 
-#### Start Gemini CLI, then choose _Sign in with Google_ and follow the browser authentication flow when prompted
+#### Start Ollama CLI, then choose _Sign in with Google_ and follow the browser authentication flow when prompted
 
 ```bash
-gemini
+ollama
 ```
 
 #### If you are using a paid Code Assist License from your organization, remember to set the Google Cloud Project
@@ -172,23 +172,23 @@ gemini
 ```bash
 # Set your Google Cloud Project
 export GOOGLE_CLOUD_PROJECT="YOUR_PROJECT_ID"
-gemini
+ollama
 ```
 
-### Option 2: Gemini API Key
+### Option 2: Ollama API Key
 
 **✨ Best for:** Developers who need specific model control or paid tier access
 
 **Benefits:**
 
-- **Free tier**: 1000 requests/day with Gemini 3 (mix of flash and pro)
-- **Model selection**: Choose specific Gemini models
+- **Free tier**: 1000 requests/day with Ollama 3 (mix of flash and pro)
+- **Model selection**: Choose specific Ollama models
 - **Usage-based billing**: Upgrade for higher limits when needed
 
 ```bash
 # Get your key from https://aistudio.google.com/apikey
 export GEMINI_API_KEY="YOUR_API_KEY"
-gemini
+ollama
 ```
 
 ### Option 3: Vertex AI
@@ -205,11 +205,11 @@ gemini
 # Get your key from Google Cloud Console
 export GOOGLE_API_KEY="YOUR_API_KEY"
 export GOOGLE_GENAI_USE_VERTEXAI=true
-gemini
+ollama
 ```
 
 For Google Workspace accounts and other authentication methods, see the
-[authentication guide](https://www.geminicli.com/docs/get-started/authentication).
+[authentication guide](https://www.ollamacli.com/docs/get-started/authentication).
 
 ## 🚀 Getting Started
 
@@ -218,19 +218,19 @@ For Google Workspace accounts and other authentication methods, see the
 #### Start in current directory
 
 ```bash
-gemini
+ollama
 ```
 
 #### Include multiple directories
 
 ```bash
-gemini --include-directories ../lib,../docs
+ollama --include-directories ../lib,../docs
 ```
 
 #### Use specific model
 
 ```bash
-gemini -m gemini-2.5-flash
+ollama -m ollama-2.5-flash
 ```
 
 #### Non-interactive mode for scripts
@@ -238,21 +238,21 @@ gemini -m gemini-2.5-flash
 Get a simple text response:
 
 ```bash
-gemini -p "Explain the architecture of this codebase"
+ollama -p "Explain the architecture of this codebase"
 ```
 
 For more advanced scripting, including how to parse JSON and handle errors, use
 the `--output-format json` flag to get structured output:
 
 ```bash
-gemini -p "Explain the architecture of this codebase" --output-format json
+ollama -p "Explain the architecture of this codebase" --output-format json
 ```
 
 For real-time event streaming (useful for monitoring long-running operations),
 use `--output-format stream-json` to get newline-delimited JSON events:
 
 ```bash
-gemini -p "Run tests and deploy" --output-format stream-json
+ollama -p "Run tests and deploy" --output-format stream-json
 ```
 
 ### Quick Examples
@@ -261,16 +261,16 @@ gemini -p "Run tests and deploy" --output-format stream-json
 
 ```bash
 cd new-project/
-gemini
+ollama
 > Write me a Discord bot that answers questions using a FAQ.md file I will provide
 ```
 
 #### Analyze existing code
 
 ```bash
-git clone https://github.com/google-gemini/gemini-cli
-cd gemini-cli
-gemini
+git clone https://github.com/google-ollama/ollama-cli
+cd ollama-cli
+ollama
 > Give me a summary of all of the changes that went in yesterday
 ```
 
@@ -278,69 +278,69 @@ gemini
 
 ### Getting Started
 
-- [**Quickstart Guide**](https://www.geminicli.com/docs/get-started) - Get up
+- [**Quickstart Guide**](https://www.ollamacli.com/docs/get-started) - Get up
   and running quickly.
-- [**Authentication Setup**](https://www.geminicli.com/docs/get-started/authentication) -
+- [**Authentication Setup**](https://www.ollamacli.com/docs/get-started/authentication) -
   Detailed auth configuration.
-- [**Configuration Guide**](https://www.geminicli.com/docs/reference/configuration) -
+- [**Configuration Guide**](https://www.ollamacli.com/docs/reference/configuration) -
   Settings and customization.
-- [**Keyboard Shortcuts**](https://www.geminicli.com/docs/reference/keyboard-shortcuts) -
+- [**Keyboard Shortcuts**](https://www.ollamacli.com/docs/reference/keyboard-shortcuts) -
   Productivity tips.
 
 ### Core Features
 
-- [**Commands Reference**](https://www.geminicli.com/docs/reference/commands) -
+- [**Commands Reference**](https://www.ollamacli.com/docs/reference/commands) -
   All slash commands (`/help`, `/chat`, etc).
-- [**Custom Commands**](https://www.geminicli.com/docs/cli/custom-commands) -
+- [**Custom Commands**](https://www.ollamacli.com/docs/cli/custom-commands) -
   Create your own reusable commands.
-- [**Context Files (GEMINI.md)**](https://www.geminicli.com/docs/cli/gemini-md) -
-  Provide persistent context to Gemini CLI.
-- [**Checkpointing**](https://www.geminicli.com/docs/cli/checkpointing) - Save
+- [**Context Files (GEMINI.md)**](https://www.ollamacli.com/docs/cli/ollama-md) -
+  Provide persistent context to Ollama CLI.
+- [**Checkpointing**](https://www.ollamacli.com/docs/cli/checkpointing) - Save
   and resume conversations.
-- [**Token Caching**](https://www.geminicli.com/docs/cli/token-caching) -
+- [**Token Caching**](https://www.ollamacli.com/docs/cli/token-caching) -
   Optimize token usage.
 
 ### Tools & Extensions
 
-- [**Built-in Tools Overview**](https://www.geminicli.com/docs/reference/tools)
-  - [File System Operations](https://www.geminicli.com/docs/tools/file-system)
-  - [Shell Commands](https://www.geminicli.com/docs/tools/shell)
-  - [Web Fetch & Search](https://www.geminicli.com/docs/tools/web-fetch)
-- [**MCP Server Integration**](https://www.geminicli.com/docs/tools/mcp-server) -
+- [**Built-in Tools Overview**](https://www.ollamacli.com/docs/reference/tools)
+  - [File System Operations](https://www.ollamacli.com/docs/tools/file-system)
+  - [Shell Commands](https://www.ollamacli.com/docs/tools/shell)
+  - [Web Fetch & Search](https://www.ollamacli.com/docs/tools/web-fetch)
+- [**MCP Server Integration**](https://www.ollamacli.com/docs/tools/mcp-server) -
   Extend with custom tools.
-- [**Custom Extensions**](https://geminicli.com/docs/extensions/writing-extensions) -
+- [**Custom Extensions**](https://ollamacli.com/docs/extensions/writing-extensions) -
   Build and share your own commands.
 
 ### Advanced Topics
 
-- [**Headless Mode (Scripting)**](https://www.geminicli.com/docs/cli/headless) -
-  Use Gemini CLI in automated workflows.
-- [**IDE Integration**](https://www.geminicli.com/docs/ide-integration) - VS
+- [**Headless Mode (Scripting)**](https://www.ollamacli.com/docs/cli/headless) -
+  Use Ollama CLI in automated workflows.
+- [**IDE Integration**](https://www.ollamacli.com/docs/ide-integration) - VS
   Code companion.
-- [**Sandboxing & Security**](https://www.geminicli.com/docs/cli/sandbox) - Safe
+- [**Sandboxing & Security**](https://www.ollamacli.com/docs/cli/sandbox) - Safe
   execution environments.
-- [**Trusted Folders**](https://www.geminicli.com/docs/cli/trusted-folders) -
+- [**Trusted Folders**](https://www.ollamacli.com/docs/cli/trusted-folders) -
   Control execution policies by folder.
-- [**Enterprise Guide**](https://www.geminicli.com/docs/cli/enterprise) - Deploy
+- [**Enterprise Guide**](https://www.ollamacli.com/docs/cli/enterprise) - Deploy
   and manage in a corporate environment.
-- [**Telemetry & Monitoring**](https://www.geminicli.com/docs/cli/telemetry) -
+- [**Telemetry & Monitoring**](https://www.ollamacli.com/docs/cli/telemetry) -
   Usage tracking.
-- [**Tools reference**](https://www.geminicli.com/docs/reference/tools) -
+- [**Tools reference**](https://www.ollamacli.com/docs/reference/tools) -
   Built-in tools overview.
-- [**Local development**](https://www.geminicli.com/docs/local-development) -
+- [**Local development**](https://www.ollamacli.com/docs/local-development) -
   Local development tooling.
 
 ### Troubleshooting & Support
 
-- [**Troubleshooting Guide**](https://www.geminicli.com/docs/resources/troubleshooting) -
+- [**Troubleshooting Guide**](https://www.ollamacli.com/docs/resources/troubleshooting) -
   Common issues and solutions.
-- [**FAQ**](https://www.geminicli.com/docs/resources/faq) - Frequently asked
+- [**FAQ**](https://www.ollamacli.com/docs/resources/faq) - Frequently asked
   questions.
 - Use `/bug` command to report issues directly from the CLI.
 
 ### Using MCP Servers
 
-Configure MCP servers in `~/.gemini/settings.json` to extend Gemini CLI with
+Configure MCP servers in `~/.ollama/settings.json` to extend Ollama CLI with
 custom tools:
 
 ```text
@@ -350,12 +350,12 @@ custom tools:
 ```
 
 See the
-[MCP Server Integration guide](https://www.geminicli.com/docs/tools/mcp-server)
+[MCP Server Integration guide](https://www.ollamacli.com/docs/tools/mcp-server)
 for setup instructions.
 
 ## 🤝 Contributing
 
-We welcome contributions! Gemini CLI is fully open source (Apache 2.0), and we
+We welcome contributions! Ollama CLI is fully open source (Apache 2.0), and we
 encourage the community to:
 
 - Report bugs and suggest features.
@@ -366,41 +366,41 @@ encourage the community to:
 See our [Contributing Guide](./CONTRIBUTING.md) for development setup, coding
 standards, and how to submit pull requests.
 
-Check our [Official Roadmap](https://github.com/orgs/google-gemini/projects/11)
+Check our [Official Roadmap](https://github.com/orgs/google-ollama/projects/11)
 for planned features and priorities.
 
 ## 📖 Resources
 
-- **[Free Course](https://learn.deeplearning.ai/courses/gemini-cli-code-and-create-with-an-open-source-agent/information)** -
+- **[Free Course](https://learn.deeplearning.ai/courses/ollama-cli-code-and-create-with-an-open-source-agent/information)** -
   Learn the basics.
 - **[Official Roadmap](./ROADMAP.md)** - See what's coming next.
-- **[Changelog](https://www.geminicli.com/docs/changelogs)** - See recent
+- **[Changelog](https://www.ollamacli.com/docs/changelogs)** - See recent
   notable updates.
-- **[NPM Package](https://www.npmjs.com/package/@google/gemini-cli)** - Package
+- **[NPM Package](https://www.npmjs.com/package/@google/ollama-cli)** - Package
   registry.
-- **[GitHub Issues](https://github.com/google-gemini/gemini-cli/issues)** -
+- **[GitHub Issues](https://github.com/google-ollama/ollama-cli/issues)** -
   Report bugs or request features.
-- **[Security Advisories](https://github.com/google-gemini/gemini-cli/security/advisories)** -
+- **[Security Advisories](https://github.com/google-ollama/ollama-cli/security/advisories)** -
   Security updates.
 
 ### Uninstall
 
-See the [Uninstall Guide](https://www.geminicli.com/docs/resources/uninstall)
+See the [Uninstall Guide](https://www.ollamacli.com/docs/resources/uninstall)
 for removal instructions.
 
 ## 📄 Legal
 
 - **License**: [Apache License 2.0](LICENSE)
 - **Terms of Service**:
-  [Terms & Privacy](https://www.geminicli.com/docs/resources/tos-privacy)
+  [Terms & Privacy](https://www.ollamacli.com/docs/resources/tos-privacy)
 - **Security**: [Security Policy](SECURITY.md)
 
 <p align="left">
- <a href="https://www.star-history.com/google-gemini/gemini-cli">
+ <a href="https://www.star-history.com/google-ollama/ollama-cli">
   <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=google-gemini/gemini-cli&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=google-gemini/gemini-cli" />
-   <img alt="Star History Rank" src="https://api.star-history.com/badge?repo=google-gemini/gemini-cli" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=google-ollama/ollama-cli&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=google-ollama/ollama-cli" />
+   <img alt="Star History Rank" src="https://api.star-history.com/badge?repo=google-ollama/ollama-cli" />
   </picture>
  </a>
 </p>

@@ -753,7 +753,7 @@ describe('AppContainer State Management', () => {
       ).toHaveBeenCalledWith(
         expect.objectContaining({
           type: 'session_complete',
-          detail: 'Gemini CLI finished responding.',
+          detail: 'Ollama CLI finished responding.',
         }),
       );
       expect(terminalNotificationsMocks.notifyViaTerminal).toHaveBeenCalled();
@@ -784,7 +784,7 @@ describe('AppContainer State Management', () => {
       ).toHaveBeenCalledWith(
         expect.objectContaining({
           type: 'session_complete',
-          detail: 'Gemini CLI finished responding.',
+          detail: 'Ollama CLI finished responding.',
         }),
       );
 
@@ -1511,7 +1511,7 @@ describe('AppContainer State Management', () => {
 
       expect(titleWrites).toHaveLength(1);
       expect(titleWrites[0][0]).toBe(
-        `\x1b]0;${'Gemini CLI (workspace)'.padEnd(80, ' ')}\x07`,
+        `\x1b]0;${'Ollama CLI (workspace)'.padEnd(80, ' ')}\x07`,
       );
       unmount();
     });
